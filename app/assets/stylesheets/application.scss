@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.hero {
+    width: 100%;
+    background-color: #FF9933;
+}
+.content {
+    color: white;
+    margin: 50px 400px;
+}
+input[type="email"] {
+        width: 300px;
+        height: 40px;
+}
+input[type="password"] {
+        width: 300px;
+        height: 40px;
+}
+input[type="name"] {
+        width: 300px;
+        height: 40px;
+}

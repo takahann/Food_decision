@@ -4,12 +4,21 @@
     <title>FoodDecision</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-light bg-primary">
+  　  <div class="container-fluid">
+    　　<ul class="nav navbar-nav navbar-right">
+          <li><%= link_to '投稿者一覧', users_path, :style=>"color:white;" %></li>
+          <li><%= link_to '投稿ページ', new_recipe_path, :style=>"color:white;" %>
+          <li><%= link_to 'マイページ', user_path(current_user), :style=>"color:white;" %>
+       </ul>
+        </div>
+      </div>
+   </nav>
     <%= yield %>
   </body>
 </html>
