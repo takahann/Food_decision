@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.png" %>
+<%= @user.name %>
+<% if @user.id == current_user.id %>
+  <%= @user.email %>
+    <%= link_to '編集', edit_user_path(@user) %>
+<% end %>
+
+  <% @user.recipes.each do |recipe| %>
+	<%= attachment_image_tag recipe, :image, :fill, 200, 200 %>
+	<%= link_to 'show', recipe_path(recipe) %>
+	<% if @user.id == current_user.id %>
+	  <%= link_to 'edit', edit_recipe_path %>
+	  <%= link_to 'destroy', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %>
+	  <%= recipe.updated_at.strftime("%Y-%m-%d")%>更新
+	<% end %>
+  <% end %>

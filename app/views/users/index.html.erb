@@ -1,3 +1,16 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>投稿者一覧</h1>
+  <div class="container">
+	  <div class="row">
+      <% @users.each do |user| %>
+  　　  <div class="col-sm-4 col-xs-4">
+           <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.png", size: "200x200" %>
+             <%= link_to user_path(user) do %>
+               <p><%= user.name %></p>
+             <% end %>
+             投稿数:<%= user.recipes.count %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 

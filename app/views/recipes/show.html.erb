@@ -1,2 +1,12 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<%= attachment_image_tag @recipe, :image, :fill, 500, 500 %>
+<%= @recipe.title %>
+<%= @recipe.food_stuff %>
+<%= simple_format @recipe.procedure %>
+<%= @recipe.user.name %>
+<% if @recipe.user.id == current_user.id %>
+<%= link_to "編集", edit_recipe_path(@recipe) %>
+<% end %>
+
+<%= link_to user_path(@recipe.user) do %>
+<%= @recipe.user.name %>さんのページへ
+<% end %>

@@ -9,16 +9,28 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
     <nav class="navbar navbar-light bg-primary">
   　  <div class="container-fluid">
     　　<ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'レシピ一覧', recipes_path, :style=>"color:white;" %></li>
           <li><%= link_to '投稿者一覧', users_path, :style=>"color:white;" %></li>
-          <li><%= link_to '投稿ページ', new_recipe_path, :style=>"color:white;" %>
-          <li><%= link_to 'マイページ', user_path(current_user), :style=>"color:white;" %>
+          <li><%= link_to '投稿ページ', new_recipe_path, :style=>"color:white;" %></li>
+          <li><%= link_to 'マイページ', user_path(current_user), :style=>"color:white;" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;"%></li>
        </ul>
-        </div>
       </div>
-   </nav>
+    </nav>
+    <% else %>
+    <nav class="navbar navbar-light bg-primary">
+  　  <div class="container-fluid">
+    　　<ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'レシピ一覧', recipes_path, :style=>"color:white;" %></li>
+          <li><%= link_to '投稿者一覧', users_path, :style=>"color:white;" %></li>
+          <li><%= link_to 'ログイン', new_user_session_path, :style=>"color:white;" %></li>
+          <li><%= link_to '新規会員登録', new_user_registration_path, :style=>"color:white;" %></li>
+        </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_032125) do
     t.string "title", null: false
     t.string "food_stuff", null: false
     t.text "procedure", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_032125) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
