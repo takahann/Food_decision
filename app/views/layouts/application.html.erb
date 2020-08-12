@@ -10,27 +10,29 @@
 
   <body>
     <% if user_signed_in? %>
-    <nav class="navbar navbar-light bg-primary">
+    <nav class="navbar bg-primary">
   　  <div class="container-fluid">
     　　<ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'レシピ一覧', recipes_path, :style=>"color:white;" %></li>
-          <li><%= link_to '投稿者一覧', users_path, :style=>"color:white;" %></li>
-          <li><%= link_to '投稿ページ', new_recipe_path, :style=>"color:white;" %></li>
-          <li><%= link_to 'マイページ', user_path(current_user), :style=>"color:white;" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;"%></li>
+          <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:white;", class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:white;", class: "glyphicon glyphicon-th-list" %></li>
+          <li><%= link_to ' 投稿ページ', new_recipe_path, :style=>"color:white;", class: "glyphicon glyphicon-pencil" %></li>
+          <li><%= link_to ' マイページ', user_path(current_user), :style=>"color:white;", class: "glyphicon glyphicon-user" %></li>
+          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;", class: "glyphicon glyphicon-log-out" %></li>
        </ul>
       </div>
     </nav>
     <% else %>
-    <nav class="navbar navbar-light bg-primary">
+    <nav class="navbar bg-primary">
   　  <div class="container-fluid">
     　　<ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'レシピ一覧', recipes_path, :style=>"color:white;" %></li>
-          <li><%= link_to '投稿者一覧', users_path, :style=>"color:white;" %></li>
-          <li><%= link_to 'ログイン', new_user_session_path, :style=>"color:white;" %></li>
-          <li><%= link_to '新規会員登録', new_user_registration_path, :style=>"color:white;" %></li>
+          <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:white;", class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:white;", class: "glyphicon glyphicon-th-list" %></li>
+          <li><%= link_to ' ログイン', new_user_session_path, :style=>"color:white;", class: "glyphicon glyphicon-log-in" %></li>
+          <li><%= link_to ' 新規会員登録', new_user_registration_path, :style=>"color:white;", class: "glyphicon glyphicon-user" %></li>
         </ul>
+      </div>
+    </nav>
     <% end %>
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>

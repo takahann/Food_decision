@@ -1,8 +1,17 @@
-<%= attachment_image_tag @recipe, :image, :fill, 500, 500 %>
-<%= @recipe.title %>
-<%= @recipe.food_stuff %>
-<%= simple_format @recipe.procedure %>
-<%= @recipe.user.name %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+			<%= attachment_image_tag @recipe, :image, :fill, 500, 500 %>
+		</div>
+		<div class="col-xs-6">
+			<%= @recipe.food_stuff %>
+			<%= @recipe.title %>
+			<%= simple_format @recipe.procedure %>
+			<%= @recipe.user.name %>
+		</div>
+	</div>
+</div>
+
 <% if @recipe.user.id == current_user.id %>
 <%= link_to "編集", edit_recipe_path(@recipe) %>
 <% end %>
