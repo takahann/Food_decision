@@ -1,15 +1,32 @@
-<%= form_for @user do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :profile_image %>
-    <%= f.attachment_field :profile_image %>
-  </div>
-    <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="edit-row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h2>ユーザー編集</h2>
+      <%= form_for @user do |f| %>
+        <div class="row">
+          <div class="form-group col-xs-8">
+            <%= f.label :ユーザーネーム %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control form-control-lg" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-8">
+            <%= f.label :Eメールアドレス %>
+            <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-8">
+            <%= f.label :プロフィール画像 %>
+            <%= f.attachment_field :profile_image %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-8">
+            <%= f.submit "更新する", class: "btn bg-primary btn-block"  %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </dic>
+</div>

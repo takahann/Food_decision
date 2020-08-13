@@ -1,16 +1,47 @@
-<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.png" %>
-<%= @user.name %>
-<% if @user.id == current_user.id %>
-  <%= @user.email %>
-    <%= link_to '編集', edit_user_path(@user) %>
-<% end %>
-
-  <% @user.recipes.each do |recipe| %>
-	<%= attachment_image_tag recipe, :image, :fill, 200, 200 %>
-	<%= link_to 'show', recipe_path(recipe) %>
-	<% if @user.id == current_user.id %>
-	  <%= link_to 'edit', edit_recipe_path %>
-	  <%= link_to 'destroy', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %>
-	  <%= recipe.updated_at.strftime("%Y-%m-%d")%>更新
-	<% end %>
-  <% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-4 col-xs-3">
+			<div class="float-right">
+				<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.png", class: "img-circle pull-left profile-thumb" %>
+			</div>
+		</div>
+		<div class="col-xs-5">
+			  ユーザーネーム：<%= @user.name %><br>
+			  投稿数：<%= @user.recipes.count %><br>
+			<% if @user.id == current_user.id %>
+			  Eメールアドレス：<%= @user.email %><br>
+			  <%= link_to '編集', edit_user_path(@user), class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<% @user.recipes.each do |recipe| %>
+			<div class="col-xs-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th><%= attachment_image_tag recipe, :image, :fill, 200, 200 %></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= link_to 'レシピ詳細', recipe_path(recipe) %></td>
+                        </tr>
+							<% if @user.id == current_user.id %>
+					          <tr>
+								<td><%= link_to 'レシピ編集', edit_recipe_path %></td>
+							  </tr>
+							  <tr>
+								<td><%= link_to 'レシピ削除', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %></td>
+							  </tr>
+							  <tr>
+								<td><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</td>
+							  </tr>
+							<% end %>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -1,29 +1,24 @@
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
-        <div class="form-header text-center">
-          <h2 class="form-header-title">ユーザーログイン</h2>
-          <h4>メールアドレスと<br>パスワードを入力してください。</h4>
-        </div>
-        <div class="form-body">
+<div class="session-container">
+  <div class="session-row">
+    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+    ログイン
+    <div class="form-body">
 
-          <div class="row">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-group col-xs-12">
-              <%= f.label :Eメールアドレス %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
-            </div>
-            <div class="form-group col-xs-12">
-              <%= f.label :パスワード %><br />
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
-            </div>
-            <div class="form-group col-xs-12">
-              <%= f.submit "ログイン", class: "btn bg-primary btn-block" %>
-            </div>
-            <% end %>
+      <div class="row">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group col-xs-12">
+            <%= f.label :Eメールアドレス %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
           </div>
-        </div>
+          <div class="form-group col-xs-12">
+            <%= f.label :パスワード %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.submit "ログイン", class: "btn bg-primary btn-block" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-
+</div>
