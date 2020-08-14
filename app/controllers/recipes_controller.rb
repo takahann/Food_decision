@@ -1,8 +1,7 @@
 class RecipesController < ApplicationController
-
   def top
+    @random = Recipe.order("RANDOM()").limit(1)
   end
-
   def new
   	@recipe = Recipe.new
   end
@@ -16,6 +15,8 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result
     if params[:tag_name]
       @recipes = Recipe.tagged_with("#{params[:tag_name]}")
     end

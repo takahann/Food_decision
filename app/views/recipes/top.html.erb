@@ -10,6 +10,10 @@
 			<div class="jumbotron">
 			</div>
 		</div>
-		<!--ランダム機能-->
+		<div class="col-xs-5">
+			<% @random.each do |recipe| %>
+			  <%= link_to "レシピを決める", recipe_path(recipe), class: "btn btn-warning btn-block" %>
+			<% end %>
+		</div>
 	</div>
 </div>

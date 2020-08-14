@@ -1,0 +1,19 @@
+<h1>recipe search</h1>
+<%= form_with url: search_recipes_path, method: :get, local: true do |f| %>
+  <%= f.text_field :recipe %>
+  <%= f.submit :search %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= @recipe.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

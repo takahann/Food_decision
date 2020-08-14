@@ -15,6 +15,11 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .logo {
+    color: black;
+    font-size: 25px;
+ }
  .session-container {
     max-width:500px;
     border: solid 1px #C0C0C0;

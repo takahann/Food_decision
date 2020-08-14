@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FoodDecision</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>FoodDecision</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <% if user_signed_in? %>
+<body>
+  <% if user_signed_in? %>
     <nav class="navbar bg-primary">
-  　  <div class="container-fluid">
-    　　<ul class="nav navbar-nav navbar-right">
-          <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:white;", class: "glyphicon glyphicon-cutlery" %></li>
-          <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:white;", class: "glyphicon glyphicon-th-list" %></li>
-          <li><%= link_to ' 投稿ページ', new_recipe_path, :style=>"color:white;", class: "glyphicon glyphicon-pencil" %></li>
-          <li><%= link_to ' マイページ', user_path(current_user), :style=>"color:white;", class: "glyphicon glyphicon-user" %></li>
-          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;", class: "glyphicon glyphicon-log-out" %></li>
-       </ul>
+      <div class="container-fluid">
+        <%= link_to 'Food_decision', root_path, class: "logo" %>
+        　<ul class="nav navbar-nav navbar-right">
+            <li class="seach-title"><%= search_form_for @search do |f| %>
+                  <%= f.search_field :title_cont %>
+                  <%= f.submit '検索' %>
+                <% end %>
+            </li>
+            <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:black;", class: "glyphicon glyphicon-cutlery" %></li>
+            <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:black;", class: "glyphicon glyphicon-th-list" %></li>
+            <li><%= link_to ' 投稿ページ', new_recipe_path, :style=>"color:black;", class: "glyphicon glyphicon-pencil" %></li>
+            <li><%= link_to ' マイページ', user_path(current_user), :style=>"color:black;", class: "glyphicon glyphicon-user" %></li>
+            <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, :style=>"color:black;", class: "glyphicon glyphicon-log-out" %></li>
+          </ul>
       </div>
     </nav>
-    <% else %>
+  <% else %>
     <nav class="navbar bg-primary">
-  　  <div class="container-fluid">
-    　　<ul class="nav navbar-nav navbar-right">
-          <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:white;", class: "glyphicon glyphicon-cutlery" %></li>
-          <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:white;", class: "glyphicon glyphicon-th-list" %></li>
-          <li><%= link_to ' ログイン', new_user_session_path, :style=>"color:white;", class: "glyphicon glyphicon-log-in" %></li>
-          <li><%= link_to ' 新規会員登録', new_user_registration_path, :style=>"color:white;", class: "glyphicon glyphicon-user" %></li>
+      <div class="container-fluid">
+        <%= link_to 'Food_decision', root_path, class: "logo" %>
+        　<ul class="nav navbar-nav navbar-right">
+          　<li class="seach-title"><%= search_form_for @search do |f| %>
+                  <%= f.search_field :title_cont %>
+                  <%= f.submit '検索' %>
+                <% end %>
+            </li>
+            <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:black;", class: "glyphicon glyphicon-cutlery" %></li>
+            <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:black;", class: "glyphicon glyphicon-th-list" %></li>
+            <li><%= link_to ' ログイン', new_user_session_path, :style=>"color:black;", class: "glyphicon glyphicon-log-in" %></li>
+            <li><%= link_to ' 新規会員登録', new_user_registration_path, :style=>"color:black;", class: "glyphicon glyphicon-user" %></li>
         </ul>
       </div>
     </nav>
-    <% end %>
+  <% end %>
   <%= yield %>
-  </body>
+</body>
 </html>

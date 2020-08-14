@@ -66,7 +66,7 @@ gem 'devise'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
-
+#デバッグ
 gem 'pry-byebug'
 
 # 画像投稿用gem
@@ -80,3 +80,5 @@ group :production do
 end
 #タグ
 gem 'acts-as-taggable-on', '~> 6.0'
+#検索
+gem 'ransack'
