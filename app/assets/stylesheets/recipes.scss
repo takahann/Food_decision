@@ -3,11 +3,44 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jumbotron {
-	height: 900px;
     background: image-url("111.jpg");
 	background-size: cover;
 	background-position: 50% 50%;
+  height: 300px;
 }
-.top-container {
-	color: white;
+h1 {
+  color: #364e96;
+  border: solid 3px #364e96;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+.recipe-box ul {
+  background: #fffde8;
+  box-shadow: 0px 0px 0px 10px #fffde8;
+  border: dashed 2px #ffb03f;
+  border-radius: 9px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+
+.recipe-box ul {
+  line-height: 1.5;
+  padding: 0.5em 0;
+}
+.recipe-box li {
+	margin-left: 40px;
+}
+.content-box {
+	background: #fcfcfc;
+  border: solid 3px gray;
+}
+.recipe-list {
+	border: 1px black solid;
+	border-radius: 10px
+}
+.recipe-list li {
+	border-bottom: 1px black solid;
 }

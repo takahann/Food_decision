@@ -29,7 +29,7 @@
                         </tr>
 							<% if @user.id == current_user.id %>
 					          <tr>
-								<td><%= link_to 'レシピ編集', edit_recipe_path %></td>
+								<td><%= link_to 'レシピ編集', edit_recipe_path(recipe) %></td>
 							  </tr>
 							  <tr>
 								<td><%= link_to 'レシピ削除', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %></td>

@@ -78,3 +78,5 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+#タグ
+gem 'acts-as-taggable-on', '~> 6.0'

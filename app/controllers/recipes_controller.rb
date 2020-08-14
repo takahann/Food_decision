@@ -16,6 +16,9 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    if params[:tag_name]
+      @recipes = Recipe.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
@@ -39,6 +42,12 @@ class RecipesController < ApplicationController
   end
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :food_stuff, :image, :procedure)
+    params.require(:recipe).permit(
+                                    :title,
+                                    :food_stuff,
+                                    :image,
+                                    :procedure,
+                                    :tag_list
+                                    )
   end
 end

@@ -1,25 +1,47 @@
-<h1>Recipes#edit</h1>
-<p>Find me in app/views/recipes/edit.html.erb</p>
-<%= form_for @recipe do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-7 col-xs-offset-3">
+       <h1>レシピ編集</h1>
 
-  <div class="field">
-    <%= f.label :food_stuff %>
-    <%= f.text_field :food_stuff %>
-  </div>
+       <%= form_for @recipe do |f| %>
+         <div class="row">
+          <div class="form-group col-xs-12">
+            <%= f.label :レシピ名 %>
+            <%= f.text_field :title, class: "form-control form-control-lg"  %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-12">
+            <%= f.label :食材 %>
+            <%= f.text_area :food_stuff, class: "form-control form-control-lg"  %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :procedure %>
-    <%= f.text_area :procedure %>
-  </div>
+        <div class="row">
+          <div class="form-group col-xs-12">
+            <%= f.label :作り方 %>
+            <%= f.text_area :procedure, size: "20x7", class: "form-control form-control-lg"  %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.attachment_field :image %>
-  </div>
+        <div class="row">
+          <div class="form-group col-xs-12">
+            <div class="tags">
+            <%= f.label :ジャンル %>
+            <%= text_field_tag 'recipe[tag_list]', @recipe.tag_list.join(",") %>
+          </div>
+        </div>
+      </div>
 
-    <%= f.submit '投稿' %>
-  <% end %>
+        <div class="row">
+          <div class="form-group col-xs-12">
+            <%= f.label :レシピ画像 %>
+            <%= f.attachment_field :image %>
+          </div>
+        </div>
+
+        <%= f.submit 'レシピを編集する', class: "btn bg-primary btn-block"  %>
+      <% end %>
+  　</div>
+　</div>
+</div>

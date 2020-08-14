@@ -1,12 +1,21 @@
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe) do %>
-    <%= attachment_image_tag recipe, :image, :fill, 300, 300 %>
-  <% end %>
-  <%= link_to user_path(recipe.user.id) do %>
-    <%= attachment_image_tag recipe.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: "100x100"%>
-  <% end %>
-
-  <%= recipe.user.name %>
-  <%= recipe.updated_at.strftime("%Y-%m-%d")%>更新
-  <%= recipe.title %>
-<% end %>
+<h1>レシピ一覧</h1>
+<div class="flex">
+	<% @recipes.each do |recipe| %>
+		<div>
+			<div class="recipe-list">
+				<%= link_to recipe_path(recipe) do %>
+				  <%= attachment_image_tag recipe, :image, :fill, 300, 300 %>
+				<% end %>
+				<ul>
+					<li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
+				  <li><%= recipe.title %></li>
+				  <li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
+				<li><%= link_to user_path(recipe.user.id) do %>
+					<%= recipe.user.name %>さんのページへ
+				<% end %>
+				</ul>
+			</div>
+		</div>
+	<% end %>
+</div>
+</div>
