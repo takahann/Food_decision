@@ -24,5 +24,50 @@
 			<% end %>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3">
+			<h3>コメント一覧</h3>
+			<% @recipe.reviews.each do |review| %>
+			  <div class=content-box>
+				<%= review.created_at.strftime('%Y/%m/%d') %>
+				<%= review.content %>
+				<div id="star-rate-<%= review.id %>"></div>
+		          <script>
+		          $('#star-rate-<%= review.id %>').raty({
+		            size: 36,
+		            starOff:  '<%= asset_path('star-off.png') %>',
+		            starOn : '<%= asset_path('star-on.png') %>',
+		            starHalf: '<%= asset_path('star-half.png') %>',
+		            half: true,
+		            readOnly: true,
+		            score: <%= review.rate %>,
+		          });
+		          </script>
+				<% if review.user.id == current_user.id %>
+				  <%= link_to 'コメントを削除する', recipe_review_path(review.recipe, review), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-warning" %>
+				<% end %>
+			  </div>
+			<% end %>
+			    <h3>コメントする</h3>
+				  <%= form_for [@recipe, @review] do |f| %>
+					<%= f.text_area :content, class: "form-control form-control-lg" %>
+					<div class="field" id="star">
+						<%= f.label :評価 %>
+						<%= f.hidden_field :rate, id: :review_star %>
+				    </div>
+				    <script>
+					  $('#star').raty({
+					    size     : 36,
+					    starOff:  '<%= asset_path('star-off.png') %>',
+					    starOn : '<%= asset_path('star-on.png') %>',
+					    starHalf: '<%= asset_path('star-half.png') %>',
+					    scoreName: 'review[rate]',
+					    half: true,
+					  });
+					  </script>
+					<%= f.submit '送信する', class: "btn btn-primary" %>
+				  <% end %>
+	       </div>
+    </div>
 </div>
 

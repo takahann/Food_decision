@@ -7,12 +7,26 @@
 				  <%= attachment_image_tag recipe, :image, :fill, 300, 300 %>
 				<% end %>
 				<ul>
-					<li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
+				  <li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
 				  <li><%= recipe.title %></li>
+				  <li id="star-rate-<%= recipe.id %>">評価：</li>
+				  <script>
+					  $('#star-rate-<%= recipe.id %>').raty({
+					    size: 36,
+			            starOff:  '<%= asset_path('star-off.png') %>',
+			            starOn : '<%= asset_path('star-on.png') %>',
+			            starHalf: '<%= asset_path('star-half.png') %>',
+			            half: true,
+					    readOnly: true,
+					    score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>',
+					    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+					  });
+				  </script>
 				  <li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
-				<li><%= link_to user_path(recipe.user.id) do %>
+				  <li><%= link_to "#{recipe.reviews.count} コメント", recipe_path(recipe.id) %></li>
+			      <li><%= link_to user_path(recipe.user.id) do %>
 					<%= recipe.user.name %>さんのページへ
-				<% end %>
+				  <% end %>
 				</ul>
 			</div>
 		</div>

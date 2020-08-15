@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes do
   	get :search, on: :collection
+  	resources :reviews, only: [:new, :create, :destroy]
   end
   root 'recipes#top'
 end
