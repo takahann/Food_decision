@@ -18,8 +18,7 @@
 			            starHalf: '<%= asset_path('star-half.png') %>',
 			            half: true,
 					    readOnly: true,
-					    score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>',
-					    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+					    score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
 					  });
 				  </script>
 				  <li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
