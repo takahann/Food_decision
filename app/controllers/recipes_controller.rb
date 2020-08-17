@@ -9,16 +9,19 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save
-    redirect_to recipe_path(@recipe)
+    if @recipe.save
+     redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def index
-    @recipes = Recipe.all
-    @search = Recipe.ransack(params[:q])
-    @recipes = @search.result
+    @recipes = Recipe.all.page(params[:page]).per(8)
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result.includes(:user).page(params[:page]).per(8)
     if params[:tag_name]
-      @recipes = Recipe.tagged_with("#{params[:tag_name]}")
+      @recipes = Recipe.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
     end
   end
 
@@ -33,8 +36,11 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
+    if @recipe.update(recipe_params)
     redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def destroy

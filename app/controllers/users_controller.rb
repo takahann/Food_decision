@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-  	@users = User.all
+  	@users = User.all.page(params[:page]).per(8)
     @search = Recipe.ransack(params[:q])
     @search_recipes = @search.result
   end
@@ -14,8 +14,11 @@ class UsersController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private

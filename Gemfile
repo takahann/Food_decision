@@ -82,3 +82,9 @@ end
 gem 'acts-as-taggable-on', '~> 6.0'
 #検索
 gem 'ransack'
+#エラーメッセージ日本語化
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+#ページネーション
+gem 'kaminari'

@@ -1,10 +1,11 @@
-<h1>レシピ一覧</h1>
-<div class="flex">
+<div class="container">
+  <div class="row">
+    <h1>レシピ一覧</h1>
 	<% @recipes.each do |recipe| %>
-		<div>
+	<div class="col-xs-6 col-sm-4 col-md-3">
 			<div class="recipe-list">
 				<%= link_to recipe_path(recipe) do %>
-				  <%= attachment_image_tag recipe, :image, :fill, 300, 300 %>
+				  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 350, height: 250 %>
 				<% end %>
 				<ul>
 				  <li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
@@ -22,13 +23,14 @@
 					  });
 				  </script>
 				  <li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
-				  <li><%= link_to "#{recipe.reviews.count} コメント", recipe_path(recipe.id) %></li>
+				  <li><%= link_to "#{recipe.reviews.count} 件のコメント", recipe_path(recipe.id) %></li>
 			      <li><%= link_to user_path(recipe.user.id) do %>
-					<%= recipe.user.name %>さんのページへ
-				  <% end %>
+					<%= recipe.user.name %>さんのページへ</li>
 				</ul>
+				  <% end %>
 			</div>
 		</div>
 	<% end %>
-</div>
+　</div>
+ <%= paginate @recipes %>
 </div>
