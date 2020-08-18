@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def top
+    @recipes = Recipe.offset(rand(Recipe.count)).first(1)
   end
   def new
   	@recipe = Recipe.new
