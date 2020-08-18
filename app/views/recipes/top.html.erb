@@ -1,17 +1,39 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
-			<h2>ようこそ！ Food_decisionへ</h2>
-			<p>日々の献立を考えていて悩んでいる方こちらのサイトを<br>ご利用して頂くと献立に困ることはありません。</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-1">
-			<div class="jumbotron">
+<div class="top-visual">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
+				<h2 class="top-headline">ようこそ！ Food_decisionへ</h2>
+				<p class="top-headline-text">日々の献立を考えていて悩んでいる方こちらのサイトを<br>ご利用して頂くと献立に困ることはありません。</p>
 			</div>
-			<% @recipes.each do |recipe| %>
-			  <%= link_to "レシピを決める", recipe_path(recipe), class: "btn btn-warning btn-block" %>
-			<% end %>
 		</div>
+		<div class="row">
+		  <div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
+		<% @recipes.each do |recipe| %>
+			<div class="row">
+				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
+					<%= link_to '献立を決める', recipe_path(recipe), class: "btn-text-3d" %>
+				</div>
+			</div>
+		<% end %>
+		<% if user_signed_in? %>
+			<div class="row">
+				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
+					<%= link_to ' マイページ', user_path(current_user), class: "btn-text-3d" %>
+				</div>
+			</div>
+		<% else %>
+			<div class="row">
+				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
+					<%= link_to 'ログイン', new_user_session_path, class: "btn-text-3d" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
+					<%= link_to ' 新規会員登録', new_user_registration_path, class: "btn-text-3d" %>
+				</div>
+			</div>
+		<% end %>
+	      </div>
+        </div>
 	</div>
 </div>

@@ -9,42 +9,36 @@
 </head>
 
 <body>
-  <% if user_signed_in? %>
-    <nav class="navbar bg-primary">
-      <div class="container-fluid">
-        <%= link_to 'Food_decision', root_path, class: "logo" %>
-        　<ul class="nav navbar-nav navbar-right">
-            <li class="seach-title"><%= search_form_for @search do |f| %>
-                  <%= f.search_field :title_cont %>
-                  <%= f.submit '検索' %>
-                <% end %>
-            </li>
-            <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:black;", class: "glyphicon glyphicon-cutlery" %></li>
-            <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:black;", class: "glyphicon glyphicon-th-list" %></li>
-            <li><%= link_to ' 投稿ページ', new_recipe_path, :style=>"color:black;", class: "glyphicon glyphicon-pencil" %></li>
-            <li><%= link_to ' マイページ', user_path(current_user), :style=>"color:black;", class: "glyphicon glyphicon-user" %></li>
-            <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, :style=>"color:black;", class: "glyphicon glyphicon-log-out" %></li>
-          </ul>
-      </div>
-    </nav>
-  <% else %>
-    <nav class="navbar bg-primary">
-      <div class="container-fluid">
-        <%= link_to 'Food_decision', root_path, class: "logo" %>
-        　<ul class="nav navbar-nav navbar-right">
-          　<li class="seach-title"><%= search_form_for @search do |f| %>
-                  <%= f.search_field :title_cont %>
-                  <%= f.submit '検索' %>
-                <% end %>
-            </li>
-            <li><%= link_to ' レシピ一覧', recipes_path, :style=>"color:black;", class: "glyphicon glyphicon-cutlery" %></li>
-            <li><%= link_to ' 投稿者一覧', users_path, :style=>"color:black;", class: "glyphicon glyphicon-th-list" %></li>
-            <li><%= link_to ' ログイン', new_user_session_path, :style=>"color:black;", class: "glyphicon glyphicon-log-in" %></li>
-            <li><%= link_to ' 新規会員登録', new_user_registration_path, :style=>"color:black;", class: "glyphicon glyphicon-user" %></li>
+  <nav class="navbar navbar-default" style="margin:0">
+    <div class="navbar-header">
+      <%= link_to 'Food_decision', root_path, class: "navbar-brand" %>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="top-nav">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
+          <li><%= link_to '投稿ページ', new_recipe_path, class: "glyphicon glyphicon-pencil" %></li>
+          <li><%= link_to 'マイページ', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
+          <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
         </ul>
       </div>
-    </nav>
-  <% end %>
+    <% else %>
+      <div class="collapse navbar-collapse" id="top-nav">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+          <li><%= link_to '新規会員登録', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
   <%= yield %>
 </body>
 </html>
