@@ -1,10 +1,26 @@
 <div class="container">
 	<div class="row">
-		<h1><%= @recipe.title %>のレシピ</h1>
+		<h1 class="recipe-headline"><%= @recipe.title %>のレシピ</h1>
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<%= attachment_image_tag @recipe, :image, class: "img-fluid mw-100", width: 450, height: 400 %>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-6 ">
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<div class="row">
+				<div class="col-xs-5 col-sm-5 col-md-5">
+					<%= attachment_image_tag @recipe.user, :profile_image, class: "img-fluid mw-100", width: 150, height: 150, fallback: "no_image.png", class: "img-fluid mw-100", width: 150, height: 150 %>
+				</div>
+				<div class="col-xs-5 col-sm-5 col-md-5">
+					<ul class="user-show">
+						<li>投稿者：<%= @recipe.user.name %></li>
+						<% if @recipe.user == current_user %>
+						  <li><%= link_to "レシピ編集", edit_recipe_path(@recipe), class: "btn btn-success" %></li>
+						<% end %>
+						<%= link_to user_path(@recipe.user), class: "btn btn-primary" do %>
+						  <%= @recipe.user.name %>さんのページへ
+						<% end %>
+					</ul>
+				</div>
+			</div>
 			<div class="recipe-box">
 				<ul class="recipe-details">
 					<li><%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
@@ -12,16 +28,8 @@
 					<li>レシピ名：<%= @recipe.title %></li>
 					<li>食材：<%= @recipe.food_stuff %></li>
 					<li>作り方：<%= simple_format @recipe.procedure %></li>
-					<li>投稿者：<%= @recipe.user.name %></li>
 				</ul>
 			</div>
-			<% if @recipe.user== current_user %>
-			  <%= link_to "レシピ編集", edit_recipe_path(@recipe), class: "btn btn-success" %>
-			<% end %>
-
-			<%= link_to user_path(@recipe.user), class: "btn btn-primary" do %>
-			  <%= @recipe.user.name %>さんのページへ
-			<% end %>
 		</div>
 	</div>
 	<div class="row">

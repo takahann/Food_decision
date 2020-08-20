@@ -4,16 +4,17 @@ class ApplicationController < ActionController::Base
 
 def set_search
   @search = Recipe.ransack(params[:q])
-  @search_recipes = @search.result
+  @recipes = @search.result
 end
+
 
   protected
   def after_sign_in_path_for(resource)
-    root_path # ログイン後に遷移するpathを設定
+    recipes_path
   end
 
   def after_sign_out_path_for(resource)
-    root_path # ログアウト後に遷移するpathを設定
+    root_path
   end
   def configure_permitted_parameters
   	devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

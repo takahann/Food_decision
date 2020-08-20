@@ -1,8 +1,42 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.table {
-	border: 1px #DDDDDD	 solid;
+
+.my-headline {
+	font-family: 'Hannotate TC',sans-serif;
+	margin: 0;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.profile-total-box {
+	margin: 15px;
+}
+.profile-box {
+    color: #1e366a;
+    border-top: solid #1e366a 1px;
+    border-bottom: solid #1e366a 1px;
+    padding: 0.5em 0 0.5em 1.5em;
+}
+.profile-box li {
+	line-height: 1.5;
+    padding: 0.5em 0;
+}
+.profile-recipe {
+	padding: 0;
+}
+.profile-recipe img {
+	border-radius: 10%;
+}
+.profile-recipe li {
+	color: #404040;
+	border-left: solid 6px #1fa67a;
+	border-bottom: solid 2px #dadada;
+    background: whitesmoke;
+	margin-bottom: 5px;
+	line-height: 1.5;
+	padding: 0.5em;
+	list-style-type: none!important;
+	font-weight: bold;
 }
 .user-list {
 	border: 1px black solid;
@@ -16,7 +50,10 @@
 .header-line {
 	text-align: center;
 }
-.seach-title {
-	color: black;
-	margin-top: 15px;
+.users-list {
+	list-style: none;
+}
+.users-headline {
+	text-align: center;
+	font-family: 'Hannotate TC',sans-serif;
 }

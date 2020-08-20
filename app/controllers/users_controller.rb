@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   def index
   	@users = User.all.page(params[:page]).per(8)
-    @search = Recipe.ransack(params[:q])
-    @search_recipes = @search.result
+    @user = current_user
+    @recipes = Recipe.all.page(params[:page]).per(8)
+    @recipe = Recipe.offset(rand(Recipe.count)).first(3)
   end
 
   def show
     @user = User.find(params[:id])
+    @recipes = Recipe.all.page(params[:page]).per(8)
   end
 
   def edit

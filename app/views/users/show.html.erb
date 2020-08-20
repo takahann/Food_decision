@@ -1,47 +1,38 @@
+<h2 class="my-headline"><%= @user.name %>さんのページ</h2>
 <div class="container">
-	<div class="row">
+	<div class="profile-total-box">
+	  <div class="row">
 		<div class="col-xs-6 col-sm-4 col-md-3 col-md-offset-3">
-			<div class="float-right">
-				<%= attachment_image_tag @user, :profile_image, class: "img-fluid mw-100", width: 200, height: 200, fallback: "no_image.png", class: "img-circle pull-left profile-thumb img-fluid mw-100", width: 200, height: 200 %>
+			<div class="profile-imege">
+				<%= attachment_image_tag @user, :profile_image, class: "img-fluid mw-100", width: 300, height: 200, fallback: "no_image.png", class: "img-fluid mw-100", width: 300, height: 200 %>
 			</div>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-3">
-			  ユーザーネーム：<%= @user.name %><br>
-			  投稿数：<%= @user.recipes.count %><br>
-			<% if @user == current_user %>
-			  Eメールアドレス：<%= @user.email %><br>
-			  <%= link_to '編集', edit_user_path(@user), class: "btn btn-primary" %>
+			<ul class="profile-box">
+				<li>ユーザーネーム：<%= @user.name %></li>
+				<li>投稿数：<%= @user.recipes.count %></li>
+				<% if @user == current_user %>
+				<li>Eメールアドレス：<%= @user.email %></li>
+			</ul>
+			<%= link_to '編集', edit_user_path(@user), class: "btn btn-primary btn-block" %>
 			<% end %>
 		</div>
+	  </div>
 	</div>
 	<div class="row">
+		<h2 class="my-headline">投稿レシピ一覧</h2>
 		<% @user.recipes.each do |recipe| %>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<table class="table">
-					<thead>
-						<tr>
-							<th><%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 350, height: 250 %></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><%= link_to 'レシピ詳細', recipe_path(recipe) %></td>
-                        </tr>
-							<% if @user == current_user %>
-					          <tr>
-								<td><%= link_to 'レシピ編集', edit_recipe_path(recipe) %></td>
-							  </tr>
-							  <tr>
-								<td><%= link_to 'レシピ削除', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %></td>
-							  </tr>
-							  <tr>
-								<td><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</td>
-							  </tr>
-							<% end %>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		<% end %>
-	</div>
+				<ul class="profile-recipe">
+					<%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 350, height: 250 %>
+					<li><%= link_to 'レシピ詳細', recipe_path(recipe) %></li>
+					<% if @user == current_user %>
+						<li><%= link_to 'レシピ編集', edit_recipe_path(recipe) %></li>
+						<li><%= link_to 'レシピ削除', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %></li>
+						<li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
+					<% end %>
+	        </div>
+        <% end %>
+        <%= paginate @recipes %>
+    </div>
 </div>

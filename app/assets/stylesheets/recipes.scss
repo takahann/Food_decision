@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.index-flex {
+  display: flex;
+  margin-right: auto;
+  color: #1e366a;
+  border-bottom: dashed #1e366a 1px;
+  padding: 0.5em 0 0.5em 1.5em;
+}
+.index-flex > div {
+  width: 50%;
+  margin: 10px;
+}
 .top-visual {
   width: 100%;
   height: 500px;
@@ -30,14 +41,35 @@
   top: 4px;
   text-shadow: none;
 }
-h1 {
-  color: #364e96;
-  border: solid 3px #364e96;
-  padding: 0.5em;
-  border-radius: 0.5em;
+.recipes-headline {
   text-align: center;
+  font-family: 'Hannotate TC',sans-serif;
 }
 
+.recipe-img img {
+  border-radius: 10%;
+  width: 100%;
+  align-self: flex-end;
+
+}
+.recipe-list li {
+  list-style: none;
+}
+.recipe-title {
+  font-size: 25px;
+  margin: 20px 0 20px 0;
+}
+.recipe-name {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+.recipe-time {
+  margin: 10px 0;
+}
+.recipe-headline {
+  text-align: center;
+  font-family: 'Hannotate TC',sans-serif;
+}
 .recipe-details {
   background: #fffde8;
   box-shadow: 0px 0px 0px 10px #fffde8;
@@ -46,6 +78,11 @@ h1 {
   margin-left: 10px;
   margin-right: 10px;
   padding: 0.5em 0.5em 0.5em 2em;
+  list-style: none;
+}
+.user-show {
+  list-style: none;
+  margin-bottom: 5px;
 }
 .recipe-box {
   margin-top: 20px;
@@ -55,25 +92,17 @@ h1 {
   padding: 0.5em 0;
 }
 .recipe-box li {
-	margin-left: 40px;
+	margin-left: 10px;
 }
 .content-box {
 	background: #fcfcfc;
   border: solid 3px gray;
 }
-.recipe-list {
-	border: 1px black solid;
-  margin-bottom: 15px;
-  border-radius: 5px;
-}
-.recipe-list li {
-	border-bottom: 1px black solid;
-}
 .content-box {
   padding: 0.5em 1em;
     margin: 2em 0;
     font-weight: bold;
-    color: #6091d3;/*文字色*/
+    color: #6091d3;
     background: #FFF;
     border: solid 3px #6091d3;
     border-radius: 10px;
@@ -81,4 +110,5 @@ h1 {
 .img-fluid {
       max-width: 100%;
       max-height: 100%;
+      border-radius: 10px;
 }

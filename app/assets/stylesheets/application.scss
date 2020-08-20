@@ -16,12 +16,17 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+body {
+    background-size: cover;
+	background-color: #EEEEEE;
+}
+
 .login-headline {
     text-align: center;
 }
 
 .navbar-default {
-  background-color: #FFA500;
+    background-color: #FFA500;
 }
 .nav navbar-nav navbar-right {
     color: rgba(0,0,255,1);
@@ -35,4 +40,43 @@
 .navbar-default .navbar-brand {
     font-family: 'HanziPen TC','Andale Mono','Chalkduster',sans-serif;
     color: #black;
+}
+
+.sidebar {
+  counter-reset:number;
+  list-style-type: none!important;
+  padding: 0.3em 0.8em;
+  border: solid 2px #ffb107;
+}
+.sidebar li {
+  border-bottom: dashed 1px orange;
+  position: relative;
+  padding: 0.5em 0.5em 0.5em 30px;
+  line-height: 1.5em;
+}
+.sidebar li:before{
+  position: absolute;
+  counter-increment: number;
+  content: counter(number);
+  display:inline-block;
+  background: #ffb107;
+  color: white;
+  font-family: 'Avenir','Arial Black','Arial',sans-serif;
+  font-weight:bold;
+  font-size: 15px;
+  border-radius: 50%;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.sidebar li:last-of-type {
+  border-bottom: none;
+}
+.sidebar-color {
+	background-color: #FFFFFF;
 }

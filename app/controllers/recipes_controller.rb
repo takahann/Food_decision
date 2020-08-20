@@ -15,11 +15,12 @@ class RecipesController < ApplicationController
       render :new
     end
   end
-
+  def search
+  end
   def index
     @recipes = Recipe.all.page(params[:page]).per(8)
-    @q = Recipe.ransack(params[:q])
-    @recipes = @q.result.includes(:user).page(params[:page]).per(8)
+    @recipe = Recipe.offset(rand(Recipe.count)).first(3)
+    @user = current_user
     if params[:tag_name]
       @recipes = Recipe.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
     end
