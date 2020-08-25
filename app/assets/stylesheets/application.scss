@@ -17,10 +17,45 @@
  @import "bootstrap";
 
 body {
-    background-size: cover;
-	background-color: #EEEEEE;
+  background-size: cover;
+  background-color: #EEEEEE;
+ padding-bottom: 50px;
+}
+.notice {
+  background-color: #008000;
+  color: white;
+  text-align: center;
 }
 
+.alert {
+  background-color: #FF6347;
+  color: white;
+  text-align: center;
+}
+.navbar-brand {
+  font-size: 26px;
+}
+#nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#nav li {
+  width: 140px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 2px;
+}
+#nav li a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px;
+}
+.pagination {
+  margin: 20px 100px;
+}
 .login-headline {
     text-align: center;
 }
@@ -41,7 +76,9 @@ body {
     font-family: 'HanziPen TC','Andale Mono','Chalkduster',sans-serif;
     color: #black;
 }
-
+.nav > li > a {
+    padding: 15px 5px;
+}
 .sidebar {
   counter-reset:number;
   list-style-type: none!important;
@@ -78,5 +115,6 @@ body {
   border-bottom: none;
 }
 .sidebar-color {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
+  margin-bottom: 50px;
 }

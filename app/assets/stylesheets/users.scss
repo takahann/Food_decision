@@ -2,14 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-item {
+  margin-bottom: 50px;
+}
 .my-headline {
-	font-family: 'Hannotate TC',sans-serif;
-	margin: 0;
-	padding-bottom: 10px;
-	text-align: center;
+  font-family: 'Hannotate TC',sans-serif;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
 }
 .profile-total-box {
-	margin: 15px;
+  margin: 15px;
 }
 .profile-box {
     color: #1e366a;
@@ -18,42 +21,73 @@
     padding: 0.5em 0 0.5em 1.5em;
 }
 .profile-box li {
-	line-height: 1.5;
+  line-height: 1.5;
     padding: 0.5em 0;
 }
 .profile-recipe {
-	padding: 0;
+  padding: 0;
 }
 .profile-recipe img {
-	border-radius: 10%;
+  border-radius: 10%;
 }
 .profile-recipe li {
-	color: #404040;
-	border-left: solid 6px #1fa67a;
-	border-bottom: solid 2px #dadada;
+  color: #404040;
+  border-left: solid 6px #1fa67a;
+  border-bottom: solid 2px #dadada;
     background: whitesmoke;
-	margin-bottom: 5px;
-	line-height: 1.5;
-	padding: 0.5em;
-	list-style-type: none!important;
-	font-weight: bold;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;
+  font-weight: bold;
+}
+.users-box {
+    margin: 2em auto;
+    padding: 1em;
+    width: 90%;
+    color: #666666;
+    border: 2px solid #996633;
+    background-color: #fff;
+    box-shadow: -2px 5px 5px #e8d3c7;
+    border-radius: 20px;
 }
 .user-list {
-	border: 1px black solid;
-	background-color: #EEEEEE;
-	border-radius: 10px
+  border: 1px black solid;
+  background-color: #EEEEEE;
+  border-radius: 10px
 }
 .user-list p {
-	border-top: 1px black solid;
-	border-bottom: 1px black solid;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
 }
 .header-line {
-	text-align: center;
+  text-align: center;
 }
-.users-list {
-	list-style: none;
+.users-list li{
+  margin-bottom: 5px;
 }
 .users-headline {
-	text-align: center;
-	font-family: 'Hannotate TC',sans-serif;
+  text-align: center;
+  font-family: 'Hannotate TC',sans-serif;
+}
+
+.user-introduction {
+ position: relative;
+ padding: 2.5em 1em 1em;
+ border-style: solid;
+ border-color: #82ca9c;
+ border-width: 5px 1px 1px;
+ background-color: #f7f7f7;
+ color: #666;
+ box-shadow: 1px 1px 3px #ccc;
+}
+
+.title-smart1 {
+ position: absolute;
+ top: 8px;
+ left: 15px;
+ background-color: #f7f7f7;
+ color: #82ca9c;
+ font-size: 1.1em;
+ font-weight: bold;
 }

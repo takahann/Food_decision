@@ -5,23 +5,26 @@
  		</div>
  	</div>
  	<div class="col-xs-12 col-sm-8 col-md-8">
+ 		<div class="post-recipe">
  		<% @users.each do |user| %>
  		  <div class="index-flex">
  			<div>
  				<%= attachment_image_tag user, :profile_image, class: "img-fluid mw-100", width: 350, height: 250, fallback: "no_image.png", class: "img-fluid mw-100", width: 350, height: 250  %>
  			</div>
- 			<div>
+ 			<div class="users-box">
  				<ul class="users-list">
  					<li><%= link_to user_path(user) do %>
  						<%= user.name %>さんのレシピへ</li>
  						<% end %>
- 						<li>投稿数:<%= user.recipes.count %></li>
+ 						<li>投稿数：<%= user.recipes.count %></li>
+ 						<li>紹介文<br><%= user.introduction %></li>
  					</ul>
- 				</div>
+ 			</div>
  		  </div>
  		<% end %>
  			<%= paginate @users %>
  	</div>
+ </div>
  	<% if user_signed_in? %>
  	  <%= render 'recipes/sidebar' %>
  	<% else %>

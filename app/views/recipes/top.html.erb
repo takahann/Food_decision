@@ -2,38 +2,65 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
-				<h2 class="top-headline">ようこそ！ Food_decisionへ</h2>
+				<h2 class="top-headline">ようこそ！ ランダムご飯へ</h2>
 				<p class="top-headline-text">日々の献立を考えていて悩んでいる方こちらのサイトを<br>ご利用して頂くと献立に困ることはありません。</p>
 			</div>
 		</div>
-		<div class="row">
-		  <div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
-		<% @recipes.each do |recipe| %>
-			<div class="row">
-				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
-					<%= link_to '献立を決める', recipe_path(recipe), class: "btn-text-3d" %>
-				</div>
-			</div>
-		<% end %>
-		<% if user_signed_in? %>
-			<div class="row">
-				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
-					<%= link_to ' マイページ', user_path(current_user), class: "btn-text-3d" %>
-				</div>
-			</div>
-		<% else %>
-			<div class="row">
-				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
-					<%= link_to 'ログイン', new_user_session_path, class: "btn-text-3d" %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
-					<%= link_to ' 新規会員登録', new_user_registration_path, class: "btn-text-3d" %>
-				</div>
-			</div>
-		<% end %>
-	      </div>
-        </div>
 	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+		  <div class="top-show">
+			<% if user_signed_in? %>
+			  <%= link_to 'マイページ', user_path(current_user), class: "btn-text-3d" %>
+			<% else %>
+				<%= link_to 'ログイン', new_user_session_path, class: "btn-text-3d" %>
+				<%= link_to '　新規会員登録', new_user_registration_path, class: "btn-text-3d" %>
+			<% end %>
+			<h4>レシピを決めるを押していただくとランダムで表示されます。</h4>
+			<FORM>
+			  <INPUT TYPE="button" id="button1" VALUE="レシピを決める" onClick="window.location.reload();"></INPUT>
+			</FORM>
+		  </div>
+		</div>
+	</div>
+	<div class="row">
+		<% @recipes.each do |recipe| %>
+			<div class="col-xs-12 col-sm-12 col-md-6">
+				<div class="index-flex">
+					<div class="recipe-img">
+						<%= link_to recipe_path(recipe) do %>
+						  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 250, height: 250 %>
+						<% end %>
+					</div>
+					<div class="title-box3">
+						<div class="title-box3-title"><%= recipe.title %></div>
+						  <ul class="top-random">
+							<li><%= link_to user_path(recipe.user.id) do %>
+								<%= recipe.user.name %>さんのページへ</li>
+							<% end %>
+								<li id="star-rate-<%= recipe.id %>">評価：</li>
+								<script>
+									$('#star-rate-<%= recipe.id %>').raty({
+										size: 50,
+										starOff:  '<%= asset_path('star-off.png') %>',
+										starOn : '<%= asset_path('star-on.png') %>',
+										starHalf: '<%= asset_path('star-half.png') %>',
+										half: true,
+										readOnly: true,
+										score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
+									});
+								</script>
+								<li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
+								<li><%= link_to "#{recipe.reviews.count} 件のコメント", recipe_path(recipe.id) %></li>
+                                <li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
+						  </ul>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 </div>
