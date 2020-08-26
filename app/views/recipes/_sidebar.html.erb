@@ -1,14 +1,16 @@
 <div class="col-xs-12 col-sm-4 col-md-4">
-	<div class="sidebar-color">
-		<h2 class="my-headline">投稿レシピ一覧</h2>
-		<% @user.recipes.each do |recipe| %>
-			<ul class="sidebar">
+		<div class="sidebar-color">
+			<h1 class="recipes-headline">おすすめレシピ</h1>
+			<% @recipe.each do |recipe| %>
+			  <ul class="sidebar">
 				<li><%= recipe.title %></li>
-				<li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
-				<li><%= link_to 'レシピ詳細', recipe_path(recipe) %></li>
-				<li><%= link_to "#{recipe.reviews.count} 件のコメント", recipe_path(recipe.id) %></li>
-			</ul>
-		<% end %>
-	</div>
+				<li><%= link_to user_path(recipe.user.id) do %>
+					<%= recipe.user.name %>さんのページへ</li>
+					<% end %>
+				<%= link_to recipe_path(recipe) do %>
+					<%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 400, height: 300 %>
+				<% end %>
+			  </ul>
+			<% end %>
+		</div>
 </div>
-<%= paginate @recipes %>

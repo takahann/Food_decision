@@ -1,39 +1,56 @@
-<div class="container">
-  <h1 class="recipes-headline">検索結果</h1>
-<% @recipes.each do |recipe| %>
+<div class="contaier">
 	<div class="row">
-		<div class="recipes-box">
-			<div class="col-xs-5 col-sm-5 col-md-5">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<h1 class="recipes-headline">検索結果
+				<p><%= search_form_for @search, url: search_recipes_path do |f| %>
+					<%= f.search_field :title_cont %>
+					<%= f.submit '検索' %>
+					<% end %>
+				</p>
+			</h1>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-8 col-md-8">
+		<div class="index-box">
+		<% @recipes.each do |recipe| %>
+			<div class="total-flex">
 				<div class="recipe-img">
 					<%= link_to recipe_path(recipe) do %>
-					  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 400, height: 250 %>
+					  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 250, height: 250 %>
 					<% end %>
 				</div>
-			</div>
-			<div class="col-xs-5 col-sm-5 col-md-5">
-				<ul class="recipe-list">
-					<li class="recipe-title"><%= recipe.title %></li>
-					<li class="recipe-name"><%= link_to user_path(recipe.user.id) do %>
-						<%= recipe.user.name %>さんのページへ</li>
-					<% end %>
+				<div class="recipes-box">
+				  <div class="memo">
+                    <span class="masking-tape"></span>
+					<ul class="recipe-list">
+						<li class="recipe-title"><%= recipe.title %></li>
+						<li class="recipe-name"><%= link_to user_path(recipe.user.id) do %>
+							<%= recipe.user.name %>さんのページへ</li>
+						<% end %>
 						<li id="star-rate-<%= recipe.id %>">評価：</li>
-						<script>
-							$('#star-rate-<%= recipe.id %>').raty({
-								size: 50,
-								starOff:  '<%= asset_path('star-off.png') %>',
-								starOn : '<%= asset_path('star-on.png') %>',
-								starHalf: '<%= asset_path('star-half.png') %>',
-								half: true,
-								readOnly: true,
-								score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
-							});
-						</script>
+							<script>
+								$('#star-rate-<%= recipe.id %>').raty({
+									size: 50,
+									starOff:  '<%= asset_path('star-off.png') %>',
+									starOn : '<%= asset_path('star-on.png') %>',
+									starHalf: '<%= asset_path('star-half.png') %>',
+									half: true,
+									readOnly: true,
+									score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
+								});
+							</script>
 						<li class="recipe-time"><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
 						<li class="recipe-comment"><%= link_to "#{recipe.reviews.count} 件のコメント", recipe_path(recipe.id) %></li>
 						<li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
 					</ul>
 				</div>
+			  </div>
 			</div>
-		</div>
-	<% end %>
+		<% end %>
+	  <%= paginate @recipes %>
+	</div>
+	</div>
+	    <%= render 'recipes/sidebar' %>
+
 </div>
+

@@ -2,9 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-headline {
+  text-align: center;
+  font-family: 'Hannotate TC',sans-serif;
+}
+.post-recipe {
+  margin-bottom: 100px;
+}
 .user-item {
   margin-bottom: 50px;
 }
+
+.user-box {
+    margin: 2em auto;
+    padding: 1em;
+    width: 90%;
+    color: #666666;
+    border: 2px solid #996633;
+    background-color: #fff;
+    box-shadow: -2px 5px 5px #e8d3c7;
+    border-radius: 20px;
+}
+
+
+
 .my-headline {
   font-family: 'Hannotate TC',sans-serif;
   margin: 0;
@@ -24,54 +45,7 @@
   line-height: 1.5;
     padding: 0.5em 0;
 }
-.profile-recipe {
-  padding: 0;
-}
-.profile-recipe img {
-  border-radius: 10%;
-}
-.profile-recipe li {
-  color: #404040;
-  border-left: solid 6px #1fa67a;
-  border-bottom: solid 2px #dadada;
-    background: whitesmoke;
-  margin-bottom: 5px;
-  line-height: 1.5;
-  padding: 0.5em;
-  list-style-type: none!important;
-  font-weight: bold;
-}
-.users-box {
-    margin: 2em auto;
-    padding: 1em;
-    width: 90%;
-    color: #666666;
-    border: 2px solid #996633;
-    background-color: #fff;
-    box-shadow: -2px 5px 5px #e8d3c7;
-    border-radius: 20px;
-}
-.user-list {
-  border: 1px black solid;
-  background-color: #EEEEEE;
-  border-radius: 10px
-}
-.user-list p {
-  border-top: 1px black solid;
-  border-bottom: 1px black solid;
-}
-.header-line {
-  text-align: center;
-}
-.users-list li{
-  margin-bottom: 5px;
-}
-.users-headline {
-  text-align: center;
-  font-family: 'Hannotate TC',sans-serif;
-}
-
-.user-introduction {
+.my-introduction {
  position: relative;
  padding: 2.5em 1em 1em;
  border-style: solid;
@@ -82,7 +56,7 @@
  box-shadow: 1px 1px 3px #ccc;
 }
 
-.title-smart1 {
+.introduction-box {
  position: absolute;
  top: 8px;
  left: 15px;
@@ -90,4 +64,18 @@
  color: #82ca9c;
  font-size: 1.1em;
  font-weight: bold;
+}
+.my-recipe {
+  padding: 0;
+}
+.my-recipe li {
+  color: #404040;
+  border-left: solid 6px #1fa67a;
+  border-bottom: solid 2px #dadada;
+    background: whitesmoke;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;
+  font-weight: bold;
 }

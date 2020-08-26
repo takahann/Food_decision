@@ -1,24 +1,27 @@
 <div class="contaier">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h1 class="recipes-headline">すべてのレシピ
+			<h1 class="recipes-headline">すべての投稿
 				<p><%= search_form_for @search, url: search_recipes_path do |f| %>
 					<%= f.search_field :title_cont %>
 					<%= f.submit '検索' %>
+					<% end %>
 				</p>
 			</h1>
 		</div>
 	</div>
-	<% end %>
 	<div class="col-xs-12 col-sm-8 col-md-8">
+		<div class="index-box">
 		<% @recipes.each do |recipe| %>
-			<div class="index-flex">
+			<div class="total-flex">
 				<div class="recipe-img">
 					<%= link_to recipe_path(recipe) do %>
 					  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 250, height: 250 %>
 					<% end %>
 				</div>
 				<div class="recipes-box">
+				  <div class="memo">
+                    <span class="masking-tape"></span>
 					<ul class="recipe-list">
 						<li class="recipe-title"><%= recipe.title %></li>
 						<li class="recipe-name"><%= link_to user_path(recipe.user.id) do %>
@@ -41,15 +44,13 @@
 						<li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
 					</ul>
 				</div>
+			  </div>
 			</div>
 		<% end %>
 	  <%= paginate @recipes %>
 	</div>
-	<% if user_signed_in? %>
-	 	<%= render 'recipes/sidebar' %>
-	<% else %>
-	    <%= render 'recipes/guests_sidebar' %>
-	<% end %>
+	</div>
+	    <%= render 'recipes/sidebar' %>
 
 </div>
 

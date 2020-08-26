@@ -1,18 +1,18 @@
  <div class="contaier">
  	<div class="row">
  		<div class="col-xs-12 col-sm-12 col-md-12">
- 			<h1 class="users-headline">投稿者一覧</h1>
+ 			<h1 class="user-headline">投稿者一覧</h1>
  		</div>
  	</div>
  	<div class="col-xs-12 col-sm-8 col-md-8">
  		<div class="post-recipe">
  		<% @users.each do |user| %>
- 		  <div class="index-flex">
+ 		  <div class="total-flex">
  			<div>
  				<%= attachment_image_tag user, :profile_image, class: "img-fluid mw-100", width: 350, height: 250, fallback: "no_image.png", class: "img-fluid mw-100", width: 350, height: 250  %>
  			</div>
- 			<div class="users-box">
- 				<ul class="users-list">
+ 			<div class="user-box">
+ 				<ul>
  					<li><%= link_to user_path(user) do %>
  						<%= user.name %>さんのレシピへ</li>
  						<% end %>
@@ -25,11 +25,7 @@
  			<%= paginate @users %>
  	</div>
  </div>
- 	<% if user_signed_in? %>
  	  <%= render 'recipes/sidebar' %>
- 	<% else %>
- 	  <%= render 'recipes/guests_sidebar' %>
- 	<% end %>
 </div>
 
 

@@ -19,7 +19,7 @@
 body {
   background-size: cover;
   background-color: #EEEEEE;
- padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 .notice {
   background-color: #008000;
@@ -57,6 +57,9 @@ body {
   margin: 20px 100px;
 }
 .login-headline {
+    text-align: center;
+}
+.registration-headline {
     text-align: center;
 }
 

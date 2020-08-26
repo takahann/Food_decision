@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="recipe-box">
-				<ul class="recipe-details">
+				<ul class="recipe-info">
 					<li><%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
 					</li>
 					<li>レシピ名：<%= @recipe.title %></li>
@@ -36,7 +36,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
 			<h3>コメント一覧</h3>
 			<% @recipe.reviews.each do |review| %>
-			  <div class=content-box>
+			  <div class="content-box">
 				<%= review.created_at.strftime('%Y/%m/%d') %>
 				<%= review.content %>
 				<div id="star-rate-<%= review.id %>"></div>
@@ -58,6 +58,7 @@
 			<% end %>
 		</div>
 	</div>
+		    <% if user_signed_in? %>
 		    <div class="row">
 		      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
 			    <h3>コメントする</h3>
@@ -81,5 +82,5 @@
 				  <% end %>
 	          </div>
 	        </div>
+	        <% end %>
 </div>
-
