@@ -2,12 +2,13 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @users = User.all.page(params[:page]).per(8)
+    @users = User.page(params[:page]).per(8)
     @recipe = Recipe.offset(rand(Recipe.count)).first(5)
   end
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes.page(params[:page]).per(8)
   end
 
   def edit

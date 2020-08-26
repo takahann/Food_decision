@@ -3,6 +3,7 @@ ja:
     attributes:
       user:
         name: "名前"
+        introduction: "紹介文"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"

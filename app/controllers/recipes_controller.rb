@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
+    @recipe.user = current_user
     if @recipe.save
       redirect_to recipe_path(@recipe), notice: '投稿が完了しました。'
     else
@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.page(params[:page]).per(8)
+    @recipes = Recipe.page(params[:page]).per(8)
     @search = Recipe.ransack(params[:q])
     @recipe = Recipe.offset(rand(Recipe.count)).first(6)
     if params[:tag_name]
@@ -40,6 +40,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @review = Review.new
+    @reviews = @recipe.reviews.page(params[:page]).per(5)
   end
 
   def edit

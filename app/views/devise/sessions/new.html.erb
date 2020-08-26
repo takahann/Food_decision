@@ -6,19 +6,19 @@
        <%= render "devise/shared/error_messages", resource: resource %>
        <div class="form-group col-xs-12 col-sm-12 col-md-12">
         <%= f.label :Eメールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+        <%= f.email_field :email, autofocus: true, :placeholder => "Eメールアドレス", autocomplete: "email", class: "form-control form-control-lg" %>
       </div>
       <div class="form-group col-xs-12 col-sm-12 col-md-12">
         <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
+        <%= f.password_field :password, :placeholder => "パスワード", autocomplete: "current-password", class: "form-control form-control-lg" %>
       </div>
       <div class="form-group col-xs-12 col-sm-12 col-md-12">
         <%= f.submit "ログイン", class: "btn bg-primary btn-block" %>
       </div>
     <% end %>
       <div class="form-group col-xs-12 col-sm-12 col-md-12">
-        <div class="col-xs-7 col-sm-7 col-md-7 col-xs-offset-3">
-          まだアカウントをお持ちでないですか？<%= link_to '新規作成', new_user_registration_path %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-xs-offset-3">
+          まだアカウントをお持ちでないですか？<br><%= link_to '新規作成', new_user_registration_path %>
         </div>
       </div>
     </div>
