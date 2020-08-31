@@ -25,13 +25,13 @@ class RecipesController < ApplicationController
   def search
     @search = Recipe.ransack(params[:q])
     @recipes = @search.result.page(params[:page]).per(8)
-    @recipe = Recipe.offset(rand(Recipe.count)).first(6)
+    @recipe = Recipe.all.sample(4)
   end
 
   def index
     @recipes = Recipe.page(params[:page]).per(8)
     @search = Recipe.ransack(params[:q])
-    @recipe = Recipe.offset(rand(Recipe.count)).first(6)
+    @recipe = Recipe.all.sample(4)
     if params[:tag_name]
       @recipes = Recipe.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
     end

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(8)
-    @recipe = Recipe.offset(rand(Recipe.count)).first(5)
+    @recipe = Recipe.all.sample(4)
   end
 
   def show
