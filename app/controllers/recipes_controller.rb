@@ -29,9 +29,9 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.page(params[:page]).per(8)
+    @recipes = Recipe.all.order(id: "DESC").page(params[:page]).per(8)
     @search = Recipe.ransack(params[:q])
-    @recipe = Recipe.all.sample(4)
+    @recipe = Recipe.find(Review.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))
     if params[:tag_name]
       @recipes = Recipe.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
     end

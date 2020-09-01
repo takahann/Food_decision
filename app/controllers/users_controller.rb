@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @users = User.page(params[:page]).per(8)
-    @recipe = Recipe.all.sample(4)
+    @users = User.all.order(id: "DESC").page(params[:page]).per(8)
+    @recipe = Recipe.find(Review.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))
   end
 
   def show
