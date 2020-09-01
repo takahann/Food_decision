@@ -14,14 +14,10 @@
 		<div class="index-box">
 		<% @recipes.each do |recipe| %>
 			<div class="total-flex">
-				<div class="recipe-img">
 					<%= link_to recipe_path(recipe) do %>
 					  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 250, height: 250 %>
 					<% end %>
-				</div>
 				<div class="recipes-box">
-				  <div class="memo">
-                    <span class="masking-tape"></span>
 					<ul class="recipe-list">
 						<li class="recipe-title"><%= recipe.title %></li>
 						<li class="recipe-name"><%= link_to user_path(recipe.user.id) do %>
@@ -44,7 +40,6 @@
 						<li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
 					</ul>
 				</div>
-			  </div>
 			</div>
 		<% end %>
 	  <%= paginate @recipes %>
