@@ -14,8 +14,9 @@
 				<% if @user == current_user %>
 				<li>Eメールアドレス：<%= @user.email %></li>
 			</ul>
-			<%= link_to '編集', edit_user_path(@user), class: "btn btn-primary btn-block" %>
-			<% end %>
+					<%= link_to '編集', edit_user_path(@user), class: "btn btn-primary btn-block" %>
+					<%= link_to "退会する", user_path(current_user.id), class: "btn btn-danger btn-block", method: :delete, data: {confirm: "本当に退会しますか？"} %>
+			　　<% end %>
 		</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1">
 			  <div class="my-introduction">
