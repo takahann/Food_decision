@@ -45,19 +45,24 @@
   <nav class="navbar navbar-fixed-bottom" style="background-color:#EEEEEE;">
     <% if user_signed_in? %>
         <ul id="nav">
-        <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
           <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
           <li><%= link_to 'マイページ', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
-      </ul>
+        </ul>
       <% else %>
-      <ul id="nav">
-        <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
+        <ul id="nav">
+          <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
           <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-      </ul>
-<% end %>
+        </ul>
+  <% end %>
+    <span id="back">
+      <a href="#">
+        <img src="/assets/e_others_408.png" alt="">
+      </a>
+    </span>
 </nav>
   <%= yield %>
+  <script type="text/javascript" src="/assets/jquery.min.js"></script>
+  <script type="text/javascript" src="/assets/script.js"></script>
 </body>
 </html>
 

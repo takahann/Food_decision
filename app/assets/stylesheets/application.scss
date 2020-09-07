@@ -16,6 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+@charset "UTF-8";
+
 body {
   background-size: cover;
   background-color: #EEEEEE;
@@ -31,6 +33,14 @@ body {
   background-color: #FF6347;
   color: white;
   text-align: center;
+}
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+}
+#back img {
+  width: 50px;
 }
 .navbar-brand {
   font-size: 26px;
