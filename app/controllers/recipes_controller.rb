@@ -52,14 +52,18 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe), notice: '編集が完了しました。'
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     recipe = Recipe.find(params[:id])
+    if recipe.user = current_user
     recipe.destroy
-    redirect_to recipes_path
+    redirect_to recipes_path, notice: '削除が完了しました。'
+    else
+    render :show
+    end
   end
 
   private

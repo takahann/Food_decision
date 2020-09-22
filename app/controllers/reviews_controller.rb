@@ -9,8 +9,13 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    Review.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
+    review = Review.find_by(id: params[:id], recipe_id: params[:recipe_id])
+    if review.user = current_user
+    review.destroy
     redirect_to recipe_path(params[:recipe_id])
+    else
+    render "recipe/show"
+    end
   end
 
   private

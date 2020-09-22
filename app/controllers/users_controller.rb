@@ -26,8 +26,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    if @user = current_user
     @user.destroy
     redirect_to root_path, noticie: '退会が完了しました。'
+    else
+    render :show
+    end
   end
 
   private
