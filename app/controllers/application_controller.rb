@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
 
+   def check_guest
+    email = resource&.email || params[:user][:email].downcase
+    if email == 'guest@guest'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+    end
+  end
+
   def set_search
     @search = Recipe.ransack(params[:q])
     @recipes = @search.result
