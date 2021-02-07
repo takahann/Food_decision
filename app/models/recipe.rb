@@ -7,6 +7,7 @@ class Recipe < ApplicationRecord
   attachment :image
   belongs_to :user
   has_many :reviews, dependent: :destroy
+  has_one_attached :video
 
   acts_as_taggable
 end

@@ -82,7 +82,8 @@ class RecipesController < ApplicationController
       :food_stuff,
       :image,
       :procedure,
-      :tag_list
+      :tag_list,
+      :video
     )
   end
 
