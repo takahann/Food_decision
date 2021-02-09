@@ -5,7 +5,6 @@
 			<%= attachment_image_tag @recipe, :image, class: "img-fluid mw-100", width: 450, height: 400 %>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
-					<%= attachment_image_tag @recipe.user, :profile_image, class: "img-fluid mw-100", width: 250, height: 300, fallback: "no_image.png", class: "img-fluid mw-100", width: 250, height: 300 %>
 					<ul class="user-show">
 						<li>投稿者：<%= @recipe.user.name %></li>
 						<% if @recipe.user == current_user %>

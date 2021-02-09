@@ -8,6 +8,10 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_one_attached :video
+  has_many :likes, dependent: :destroy
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 
   acts_as_taggable
 end

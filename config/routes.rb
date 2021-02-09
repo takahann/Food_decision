@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :recipes do
     get :search, on: :collection
     resources :reviews, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
 end

@@ -11,5 +11,6 @@ class User < ApplicationRecord
 
   has_many :recipes, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
   attachment :profile_image
 end

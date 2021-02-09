@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <% if recipe.liked_by?(current_user) %>
+    <strong>いいね　：<i class="fas fa-heart" style="color: #FF367F;"></i></strong><%=link_to recipe.likes.count, recipe_likes_path(recipe.id), method: :delete, remote: true %>
+  <% else %>
+    <strong>いいね　：<i class="fa fa-heart-o"></i></strong><%=link_to recipe.likes.count, recipe_likes_path(recipe.id), method: :post, remote: true %>
+  <% end %>
+  <% else %>
+     <i class="fas fa-heart" style="color: #FF367F;"><%= post.likes.count %></i>
+<% end %>

@@ -22,9 +22,12 @@
               <div class="card-body">
                 <p class="card-text">
                   <strong>タイトル：<%= recipe.title %></strong><br>
-                  <strong>投稿者　：</strong><%= recipe.user.name %><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %>
+                  <div id="likes_buttons_<%= recipe.id %>">
+                     <%= render partial: 'likes/like', locals: { recipe: recipe} %>
+                  </div>
                   <strong id="star-rate-<%= recipe.id %>">評価　　：</strong>
-                  　　　　　　　　<script>
+                  <script>
 									$('#star-rate-<%= recipe.id %>').raty({
 										size: 50,
 										starOff:  '<%= asset_path('star-off.png') %>',
@@ -65,19 +68,10 @@
               <div class="card-body">
                 <p class="card-text">
                   <strong>タイトル：<%= recipe.title %></strong><br>
-                  <strong>投稿者　：</strong><%= recipe.user.name %><br>
-                  <strong id="star-rate-<%= recipe.id %>">評価　　：</strong>
-                  　　　　　　　　<script>
-									$('#star-rate-<%= recipe.id %>').raty({
-										size: 50,
-										starOff:  '<%= asset_path('star-off.png') %>',
-										starOn : '<%= asset_path('star-on.png') %>',
-										starHalf: '<%= asset_path('star-half.png') %>',
-										half: true,
-										readOnly: true,
-										score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
-									});
-								</script><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %>
+                  <div id="likes_buttons_<%= recipe.id %>">
+                     <%= render partial: 'likes/like', locals: { recipe: recipe} %>
+                  </div>
                 </p>
                 <div class="d-flex justify-content">
 
