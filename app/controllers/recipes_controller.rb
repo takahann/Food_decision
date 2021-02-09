@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
   end
 
   def top
-    @recipes = Recipe.all.sample(4)
+    @recipe = Recipe.all.sample(4)
+    @recipes = Recipe.all.order(created_at: :desc)
   end
 
   def new_guest

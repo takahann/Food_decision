@@ -1,48 +1,30 @@
-<div class="top-photo">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-3">
-				<h2 class="top-headline">ようこそ！ ランダムご飯へ</h2>
-				<p class="top-headline-text">日々の献立を考えていて悩んでいる方こちらのサイトを<br>ご利用して頂くと献立に困ることはありません。</p>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12">
-		  <div class="top-section">
-			<% if user_signed_in? %>
-			  <%= link_to 'マイページ', user_path(current_user), class: "btn-text" %>
-			<% else %>
-			  <%= link_to 'ログイン　', new_user_session_path, class: "btn-text" %>
-			  <%= link_to 'ゲストログイン　', users_guest_sign_in_path, method: :post, class: "btn-text" %>
-			  <%= link_to '　新規会員登録', new_user_registration_path, class: "btn-text" %>
-			<% end %>
-			<h4>レシピを決めるを押していただくとランダムで表示されます。</h4>
-			<FORM>
-			  <INPUT TYPE="button" id="button1" VALUE="レシピを決める" onClick="window.location.reload();"></INPUT>
-			</FORM>
-		  </div>
-		</div>
-	</div>
-	<div class="row">
-		<% @recipes.each do |recipe| %>
-			<div class="col-xs-12 col-sm-12 col-md-6">
-				<div class="total-flex">
-					<div class="recipe-img">
-						<%= link_to recipe_path(recipe) do %>
-						  <%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 250, height: 250 %>
-						<% end %>
-					</div>
-					<div class="top-menu-box">
-						<div class="top-menu-title"><%= recipe.title %></div>
-						  <ul class="top-random">
-							<li><%= link_to user_path(recipe.user.id) do %>
-								<%= recipe.user.name %>さんのページへ</li>
-							<% end %>
-								<li id="star-rate-<%= recipe.id %>">評価：</li>
-								<script>
+<div class="top-container">
+    <div class="row">
+      <h3 class="top-content">ランダムご飯</h3>
+    </div>
+    <div class="row">
+      <p class="top-content-name">
+        <% if user_signed_in? %>
+          ようこそ！！<%= current_user.name %>さん
+        <% else %>
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="container">
+      <h3 class="top-list"><i class="fa fa-check"></i>レシピを決める</h3>
+        <div class="row">
+        <% @recipe.first(3).each do |recipe| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <%= attachment_image_tag recipe, :image, class: "card-img-top", size: "287x225"%>
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>タイトル：<%= recipe.title %></strong><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %><br>
+                  <strong id="star-rate-<%= recipe.id %>">評価　　：</strong>
+                  　　　　　　　　<script>
 									$('#star-rate-<%= recipe.id %>').raty({
 										size: 50,
 										starOff:  '<%= asset_path('star-off.png') %>',
@@ -52,16 +34,68 @@
 										readOnly: true,
 										score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
 									});
-								</script>
-								<li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
-								<li><%= link_to "#{recipe.reviews.count} 件のコメント", recipe_path(recipe.id) %></li>
-                                <li><%= render 'recipes/tag_list', tag_list: recipe.tag_list %></li>
-						  </ul>
-						</div>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
+								</script><br>
+                </p>
+                <div class="d-flex justify-content">
+
+                  <div class="btn-position">
+                    <%= link_to "詳細", recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
+                  </div>
+                  <small class="text-muted">投稿日時：<%= recipe.created_at.strftime('%Y/%m/%d') %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        <div style="text-align:center;">
+        	<FORM>
+			  <INPUT TYPE="button" id="button1" VALUE="レシピを決める" onClick="window.location.reload();"></INPUT>
+			</FORM>
+    　　</div>
+    </div>
+
+    <div class="container">
+      <h3 class="top-list"><i class="fas fa-camera"></i>新着投稿</h3>
+        <div class="row">
+        <% @recipes.first(3).each do |recipe| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <%= attachment_image_tag recipe, :image, class: "card-img-top", size: "287x225"%>
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>タイトル：<%= recipe.title %></strong><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %><br>
+                  <strong id="star-rate-<%= recipe.id %>">評価　　：</strong>
+                  　　　　　　　　<script>
+									$('#star-rate-<%= recipe.id %>').raty({
+										size: 50,
+										starOff:  '<%= asset_path('star-off.png') %>',
+										starOn : '<%= asset_path('star-on.png') %>',
+										starHalf: '<%= asset_path('star-half.png') %>',
+										half: true,
+										readOnly: true,
+										score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
+									});
+								</script><br>
+                </p>
+                <div class="d-flex justify-content">
+
+                  <div class="btn-position">
+                    <%= link_to "詳細", recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
+                  </div>
+                  <small class="text-muted">投稿日時：<%= recipe.created_at.strftime('%Y/%m/%d') %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        <div style="text-align:center;">
+        <%= link_to '新着投稿を見る', recipes_path, class: "btn page-link text-dark d-inline-block rounded-pill"  %>
+    　　</div>
+    </div>
 </div>
-</div>
+
+
+

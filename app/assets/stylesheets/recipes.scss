@@ -2,6 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top-content {
+    font-family: 'Amatic SC', cursive;
+    font-size: 80px;
+    color: black;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    text-shadow: 0px 0px 1px black;
+}
+.top-content-name {
+    font-size: 30px;
+    color: black;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    text-shadow: 0px 0px 1px black;
+}
+.top-list{
+  font-size: 30px;
+  font-weight: 600;
+  padding: 2px;
+  background: linear-gradient(transparent 60%, #cccccc 0%);
+}
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+}
+.card {
+    background-color: #F7F7F7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
 .total-flex {
   display: flex;
   margin-right: auto;
@@ -39,20 +78,7 @@
   background-size: cover;
   background-position: center;
 }
-.top-headline {
-  font-family: 'HanziPen TC',sans-serif;
-  text-align: center;
-}
-.top-photo {
-  width: 100%;
-  height: 400px;
-  background-image: image-url("background.jpg");
-  background-size: cover;
-  background-position: bottom center;
-}
-.top-section {
-  text-align: center;
-}
+
 .btn-text {
   text-align: center;
   text-decoration: none;
@@ -65,33 +91,7 @@
   top: 4px;
   text-shadow: none;
 }
-.top-random {
-  list-style: none;
-  margin: 0;
-  padding-left: 10px;
-}
-.top-random li {
-  margin: 10px;
-}
-.top-menu-box{
-  margin: 1em 0;
-  background-color: #fff3e0;
-  border: 2px solid #ffa726;
-  letter-spacing: .3px;
-}
 
-.top-menu-title{
-  color: #fff;
-  font-weight: bold;
-  background-color: #ffa726;
-  padding: 4px 6px;
-  text-align: center;
-}
-.top-headline-text {
-  font-family: 'HanziPen TC','Andale Mono',sans-serif;
-  font-size: 18px;
-  text-align: center;
-}
 #button1 {
   display: inline-block;
   padding: 7px 20px;
