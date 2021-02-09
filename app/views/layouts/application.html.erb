@@ -38,29 +38,35 @@
         </ul>
       </div>
     <% end %>
-  </nav>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
-  <nav class="navbar navbar-fixed-bottom" style="background-color:#EEEEEE;">
-    <% if user_signed_in? %>
-        <ul id="nav">
-          <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
-          <li><%= link_to 'マイページ', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
+    <div id="sp-menu">
+      <% if user_signed_in? %>
+        <ul style="margin-top:0px;">
+          <li><i class="fa fa-user fa-2x"></i><%= link_to '　マイページ', user_path(current_user.id) %></li>
+          <li><i class="fa fa-home fa-2x"></i><%= link_to '　トップページ', root_path %></li>
+          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', recipes_about_path %></li>
+          <li><i class="fa fa-pencil-square-o fa-2x"></i> <%= link_to '　投稿', new_recipe_path %></li>
+          <li><i class="fa fa-sign-out fa-2x"></i><%= link_to '　ログアウト',destroy_user_session_path, method: :delete %></li>
         </ul>
       <% else %>
-        <ul id="nav">
-          <li><%= link_to '投稿者一覧', users_path, class: "glyphicon glyphicon-th-list" %></li>
-          <li><%= link_to 'レシピ一覧', recipes_path, class: "glyphicon glyphicon-cutlery" %></li>
+        <ul style="margin-top:0px;">
+          <li><i class="fa fa-home fa-2x"></i><%= link_to '　トップページ', root_path %></li>
+          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', recipes_about_path %></li>
+          <li><i class="fa fa-sign-in fa-2x"></i><%= link_to '　ログイン', new_user_session_path %></li>
+          <li><i class="fa fa-user fa-2x"></i><%= link_to '　新規登録', new_user_registration_path %></li>
         </ul>
-  <% end %>
-    <span id="back">
-      <a href="#">
-        <img src="/assets/e_others_408.png" alt="">
+      <% end %>
+    </div>
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
       </a>
-    </span>
-</nav>
+    </div>
+  </nav>
   <%= yield %>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
 
