@@ -5,5 +5,5 @@
     <strong>いいね　：<i class="fa fa-heart-o"></i></strong><%=link_to recipe.likes.count, recipe_likes_path(recipe.id), method: :post, remote: true %>
   <% end %>
   <% else %>
-     <i class="fas fa-heart" style="color: #FF367F;"><%= post.likes.count %></i>
+     <i class="fas fa-heart" style="color: #FF367F;"><%= recipe.likes.count %></i>
 <% end %>

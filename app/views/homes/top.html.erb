@@ -89,7 +89,37 @@
         <%= link_to '新着投稿を見る', recipes_path, class: "btn page-link text-dark d-inline-block rounded-pill"  %>
     　　</div>
     </div>
-</div>
 
+    <div class="container">
+      <h3 class="top-list"><i class="fas fa-crown" style="color: black;"></i>人気ランキング</h3>
+        <div class="row">
+        <% @ranking.first(3).each do |recipe| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <%= attachment_image_tag recipe, :image, class: "card-img-top", size: "287x225"%>
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>タイトル：<%= recipe.title %></strong><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %>
+                  <div id="likes_buttons_<%= recipe.id %>">
+                     <%= render partial: 'likes/like', locals: { recipe: recipe} %>
+                  </div>
+                </p>
+                <div class="d-flex justify-content">
+
+                  <div class="btn-position">
+                    <%= link_to "詳細", recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
+                  </div>
+                  <small class="text-muted">投稿日時：<%= recipe.created_at.strftime('%Y/%m/%d') %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+    </div>
+    <div style="text-align:center;">
+        <%= link_to 'ランキングを見る', ranking_path, class: "btn page-link text-dark d-inline-block rounded-pill"  %>
+    </div>
 
 

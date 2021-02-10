@@ -23,7 +23,7 @@
     <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="top-nav">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'このサイトについて', recipes_about_path, class: "glyphicon glyphicon-star" %></li>
+          <li><%= link_to 'このサイトについて', homes_about_path, class: "glyphicon glyphicon-star" %></li>
           <li><%= link_to '投稿ページ', new_recipe_path, class: "glyphicon glyphicon-pencil" %></li>
           <li><%= link_to 'マイページ', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
           <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
@@ -32,7 +32,7 @@
     <% else %>
       <div class="collapse navbar-collapse" id="top-nav">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'このサイトについて', recipes_about_path, class: "glyphicon glyphicon-star" %></li>
+          <li><%= link_to 'このサイトについて', homes_about_path, class: "glyphicon glyphicon-star" %></li>
           <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
           <li><%= link_to '新規会員登録', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
         </ul>
@@ -43,14 +43,14 @@
         <ul style="margin-top:0px;">
           <li><i class="fa fa-user fa-2x"></i><%= link_to '　マイページ', user_path(current_user.id) %></li>
           <li><i class="fa fa-home fa-2x"></i><%= link_to '　トップページ', root_path %></li>
-          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', recipes_about_path %></li>
+          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', homes_about_path %></li>
           <li><i class="fa fa-pencil-square-o fa-2x"></i> <%= link_to '　投稿', new_recipe_path %></li>
           <li><i class="fa fa-sign-out fa-2x"></i><%= link_to '　ログアウト',destroy_user_session_path, method: :delete %></li>
         </ul>
       <% else %>
         <ul style="margin-top:0px;">
           <li><i class="fa fa-home fa-2x"></i><%= link_to '　トップページ', root_path %></li>
-          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', recipes_about_path %></li>
+          <li><i class="fa fa-sticky-note-o fa-2x"></i><%= link_to '　About', homes_about_path %></li>
           <li><i class="fa fa-sign-in fa-2x"></i><%= link_to '　ログイン', new_user_session_path %></li>
           <li><i class="fa fa-user fa-2x"></i><%= link_to '　新規登録', new_user_registration_path %></li>
         </ul>

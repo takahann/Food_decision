@@ -1,14 +1,6 @@
 class RecipesController < ApplicationController
   before_action :correct_recipe, only: [:edit, :update]
 
-  def about
-  end
-
-  def top
-    @recipe = Recipe.all.sample(4)
-    @recipes = Recipe.all.order(created_at: :desc)
-  end
-
   def new_guest
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -73,6 +65,10 @@ class RecipesController < ApplicationController
     else
     render :show
     end
+  end
+
+  def ranking
+    @recipes = Recipe.joins(:likes).group(:recipe_id).order('count(recipe_id) desc').page(params[:page]).per(9)
   end
 
   private
