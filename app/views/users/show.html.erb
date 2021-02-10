@@ -1,49 +1,68 @@
-<h2 class="my-headline"><%= @user.name %>さんのページ</h2>
+
 <div class="container">
-	<div class="profile-total-box">
-	  <div class="row">
-		<div class="col-xs-5 col-sm-4 col-md-4 col-xs-offset-1">
-			<div class="profile-imege">
-				<%= attachment_image_tag @user, :profile_image, class: "img-fluid mw-100", width: 300, height: 200, fallback: "no_image.png", class: "img-fluid mw-100", width: 300, height: 200 %>
-			</div>
-		</div>
-		<div class="col-xs-5 col-sm-5 col-md-5 col-xs-offset-1">
-			<ul class="profile-box">
-				<li>ユーザーネーム：<%= @user.name %></li>
-				<li>投稿数：<%= @user.recipes.count %></li>
-				<% if @user == current_user %>
-				<li>Eメールアドレス：<%= @user.email %></li>
-			</ul>
-			    <% if current_user && current_user.id == 10 %>
-		          <% elsif @user == current_user %>
-		            <%= link_to '編集', edit_user_path(@user), class: "btn btn-primary btn-block" %>
-					<%= link_to "退会する", user_path(current_user.id), class: "btn btn-danger btn-block", method: :delete, data: {confirm: "本当に退会しますか？"} %>
-		          <% end %>
-			　　<% end %>
-		</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1">
-			  <div class="my-introduction">
-			  	<span class="introduction-box">自己紹介</span>
-				<p><%= @user.introduction %></p>
-			</div>
+  <h2 class="my-headline"><%= @user.name %>様のページ</h2>
+  <div class="card mb-3" style="max-width: 700px;">
+	<div class="row no-gutters">
+	    <div class="col-md-6">
+	      <%= attachment_image_tag @user, :profile_image, class: "img-fluid", fallback: "no_image.png", class: "img-fluid"%>
+	    </div>
+	    <div class="col-md-6">
+	      <div class="card-body">
+	        <h5 class="card-title"></h5>
+	        <p class="card-text">ユーザーネーム：<%= @user.name %><br>
+	        	投稿数：<%= @user.recipes.count %><br>
+	        	自己紹介：<%= @user.introduction %>
+	        </p>
+	      </div>
+	    </div>
 	  </div>
 	</div>
 	<div class="row">
-		<h2 class="my-headline">投稿レシピ一覧</h2>
-		<% @recipes.each do |recipe| %>
-			<div class="col-xs-6 col-sm-4 col-md-3">
-				<ul class="my-recipe">
-					<%= attachment_image_tag recipe, :image, class: "img-fluid mw-100", width: 350, height: 250 %>
-					<li><%= link_to 'レシピ詳細', recipe_path(recipe) %></li>
-					<% if @user == current_user %>
-						<li><%= link_to 'レシピ編集', edit_recipe_path(recipe) %></li>
-						<li><%= link_to 'レシピ削除', recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %></li>
-						<li><%= recipe.updated_at.strftime("%Y-%m-%d")%>更新</li>
-					<% end %>
-				</ul>
-	        </div>
-        <% end %>
-    </div>
-    <%= paginate @recipes %>
-</div>
+		<div class="card border-primary mb-3" style="width: 18rem;">
+		  <div class="card-body text-primary">
+		    <i class="fa fa-pencil-square-o fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "新規投稿", new_recipe_path, class: "btn btn-primary btn-block" %></div>
+		</div>
+
+		<div class="card border-success mb-3" style="width: 18rem;">
+		  <div class="card-body text-success">
+		    <i class="fa fa-list-ol fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "投稿一覧", user_post_list_path(@user), class: "btn btn-success btn-block" %></div>
+		</div>
+
+		<div class="card border-warning mb-3" style="width: 18rem;">
+		  <div class="card-body text-warning">
+		    <i class="fa fa-thumbs-o-up fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "いいね一覧", new_recipe_path, class: "btn btn-warning btn-block" %></div>
+		</div>
+	</div>
+
+	<div class="row">
+	<% if current_user && current_user.id == 10 %>
+	  <% elsif @user == current_user %>
+		<div class="card border-info mb-3" style="width: 18rem;">
+		  <div class="card-body text-info">
+		    <i class="fa fa-wrench fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "編集", edit_user_path, class: "btn btn-info btn-block" %></div>
+		</div>
+
+		<div class="card border-secondary mb-3" style="width: 18rem;">
+		  <div class="card-body text-secondary">
+		    <i class="fas fa-crown fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "ランキング", ranking_path, class: "btn btn-secondary btn-block" %></div>
+		</div>
+
+		<div class="card border-danger mb-3" style="width: 18rem;">
+		  <div class="card-body text-danger">
+		    <i class="fa fa-sign-out fa-10x"></i>
+		  </div>
+		  <div class="card-footer"><%= link_to "退会する", new_recipe_path, class: "btn btn-danger btn-block" %></div>
+		</div>
+	<% end %>
+	</div>
 </div>

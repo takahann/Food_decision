@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about' => 'homes#about'
   get "ranking" => "recipes#ranking"
-  resources :users, only: [:index, :show, :edit, :update, :create, :destroy]
+  resources :users, only: [:index, :show, :edit, :update, :create, :destroy] do
+    get 'post_list/:id', to:'users#post_list', as: 'post_list'
+  end
   resources :recipes do
     get :search, on: :collection
     resources :reviews, only: [:create, :destroy]
