@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "ranking" => "recipes#ranking"
   resources :users, only: [:index, :show, :edit, :update, :create, :destroy] do
     get 'post_list/:id', to:'users#post_list', as: 'post_list'
+    get 'like_list/:id', to:'users#like_list', as: 'like_list'
   end
   resources :recipes do
     get :search, on: :collection

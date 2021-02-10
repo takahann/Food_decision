@@ -15,6 +15,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def like_list
+    @user = User.find(params[:id])
+    @recipes = @user.recipes
+    likes = Like.where(user_id: current_user.id).pluck(:recipe_id)
+    @like_list = Recipe.find(likes)
+  end
+
   def edit
     @user = User.find(params[:id])
   end

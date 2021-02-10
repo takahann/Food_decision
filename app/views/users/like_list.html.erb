@@ -1,0 +1,44 @@
+<section class="text-center">
+    <div class="container">
+      <h2 class="jumbotron-heading"><%= @user.name %>様のいいね一覧</h2>
+    </div>
+  </section>
+<div class="container">
+  <div class="row">
+      <% @like_list.each do |recipe| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <%= attachment_image_tag recipe, :image, class: "card-img-top", size: "287x225"%>
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>タイトル：<%= recipe.title %></strong><br>
+                  <strong>投稿者　：</strong><%= recipe.user.name %>
+                  <div id="likes_buttons_<%= recipe.id %>">
+                     <%= render partial: 'likes/like', locals: { recipe: recipe} %>
+                  </div>
+                  <strong id="star-rate-<%= recipe.id %>">評価　　：</strong>
+                  <script>
+                  $('#star-rate-<%= recipe.id %>').raty({
+                    size: 50,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: '<%= recipe.reviews.average(:rate).to_f.round(1) %>'
+                  });
+                </script><br>
+                </p>
+                <div class="d-flex justify-content">
+
+                  <div class="btn-position">
+                    <%= link_to "詳細", recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
+                  </div>
+                  <small class="text-muted">投稿日時：<%= recipe.created_at.strftime('%Y/%m/%d') %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
