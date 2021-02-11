@@ -13,8 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
-
+@import "bootstrap";
 @charset "UTF-8";
 
 body {
@@ -22,6 +21,7 @@ body {
   background-color: #EEEEEE;
   padding-bottom: 100px;
 }
+
 .notice {
   background-color: #008000;
   color: white;
@@ -131,9 +131,12 @@ body {
     font-weight: bold;
 }
 
-.pagination {
-  margin: 20px 100px;
+h1{
+  text-align: center;
+  margin: 50px 0;
 }
+
+
 .login-headline {
     text-align: center;
 }
