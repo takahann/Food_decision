@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.img_prev:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+}
 .top-content {
     font-family: 'Amatic SC', cursive;
     font-size: 80px;

@@ -1,48 +1,53 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-2">
-       <h1>レシピ編集</h1>
-
-       <%= form_for @recipe do |f| %>
-         <%= render 'layouts/error_messages', model: f.object %>
-         <div class="row">
+  <h1>レシピ編集</h1>
+      <%= form_for @recipe do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+        <table class="table table-bordered">
           <div class="form-group col-xs-12">
-            <%= f.label :レシピ名 %>
-            <%= f.text_field :title, class: "form-control form-control-lg"  %>
+            <tr>
+              <th><%= f.label :レシピ名 %></th>
+              <td><%= f.text_field :title, class: "form-control form-control-lg" %></td>
+            </tr>
           </div>
-        </div>
-        <div class="row">
           <div class="form-group col-xs-12">
-            <%= f.label :食材 %>
-            <%= f.text_area :food_stuff, class: "form-control form-control-lg"  %>
+            <tr>
+              <th><%= f.label :材料 %></th>
+              <td><%= f.text_area :food_stuff, class: "form-control form-control-lg"  %></td>
+            </tr>
           </div>
-        </div>
-
-        <div class="row">
           <div class="form-group col-xs-12">
-            <%= f.label :作り方 %>
-            <%= f.text_area :procedure, size: "20x7", class: "form-control form-control-lg"  %>
+            <tr>
+              <th><%= f.label :作り方 %></th>
+              <td><%= f.text_area :procedure, :placeholder => "200文字以内", size: "20x7", class: "form-control form-control-lg"  %></td>
+            </tr>
           </div>
-        </div>
-
-        <div class="row">
           <div class="form-group col-xs-12">
             <div class="tags">
-              <%= f.label :ジャンル %>
-              <%= text_field_tag 'recipe[tag_list]', @recipe.tag_list.join(",") %>
+              <tr>
+                <th><%= f.label :ジャンル %></th>
+                <td><%= text_field_tag 'recipe[tag_list]', @recipe.tag_list.join(",") %></td>
+              </tr>
             </div>
         　</div>
-        </div>
-
-        <div class="row">
           <div class="form-group col-xs-12">
-            <%= f.label :レシピ画像 %>
-            <%= f.attachment_field :image %>
-          </div>
+            <div class="tags">
+              <tr>
+                <th><%= f.label :動画 %></th>
+                <td><%= f.file_field :video %></td>
+              </tr>
+            </div>
+        　</div>
+        <div class="form-group col-xs-12">
+          <tr>
+            <th><%= f.label :画像 %></th>
+                <%= f.file_field :image, class: 'img_field', style: 'display:none;' %></td>
+            <td><%= attachment_image_tag @recipe, :image, fallback: 'no_image.png',  onClick: "$('.img_field').click()", class: 'center-block img-responsive img_prev', size: "400x300" %></td>
+          </tr>
         </div>
-
-        <%= f.submit 'レシピを編集する', class: "btn bg-primary btn-block"  %>
-      <% end %>
-  　</div>
-　</div>
+      </table>
+          <div class="form-group col-xs-12">
+            <%= f.submit 'レシピを編集する', class: "btn bg-primary btn-block" %>
+          </div>
+    <% end %>
 </div>
+
