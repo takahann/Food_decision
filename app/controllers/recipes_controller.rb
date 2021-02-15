@@ -40,6 +40,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @see = See.find_by(ip: request.remote_ip)
     @review = Review.new
     @reviews = @recipe.reviews.page(params[:page]).per(5)
   end

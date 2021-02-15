@@ -6,6 +6,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
 					<ul class="user-show">
+						<li>閲覧数<%= See.count + 1 %></li>
 						<li>投稿者：<%= @recipe.user.name %></li>
 						<% if @recipe.user == current_user %>
 						  <li><%= link_to "レシピ編集", edit_recipe_path(@recipe), class: "btn btn-success" %></li>
