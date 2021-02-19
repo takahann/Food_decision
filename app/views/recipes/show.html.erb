@@ -23,8 +23,10 @@
 					<li><%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
 					</li>
 					<li>レシピ名：<%= @recipe.title %></li>
-					<li>食材：<%= @recipe.food_stuff %></li>
-					<li>作り方：<%= simple_format @recipe.procedure %></li>
+				    <% @recipe.recipe_items.each do |recipe| %>
+		                <%= recipe.food_stuff %>
+		                <%= recipe.procedure %>
+		            <% end %>
 				</ul>
 			</div>
 		</div>

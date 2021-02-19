@@ -89,3 +89,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # ページネーション
 gem 'kaminari'
+
+gem "nested_form"

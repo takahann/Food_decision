@@ -1,6 +1,6 @@
 <div class="container">
   <h1>レシピ投稿</h1>
-      <%= form_for @recipe do |f| %>
+      <%= nested_form_for(@recipe) do |f| %>
             <%= render 'layouts/error_messages', model: f.object %>
         <table class="table table-bordered">
           <div class="form-group col-xs-12">
@@ -12,13 +12,22 @@
           <div class="form-group col-xs-12">
             <tr>
               <th><%= f.label :材料 %></th>
-              <td><%= f.text_area :food_stuff, class: "form-control form-control-lg"  %></td>
+              <%= f.fields_for :recipe_items do |f| %>
+                <td><%= f.text_field :food_stuff, class: "form-control form-control-lg" %>
+                <%= f.link_to_remove "削除" %>
+              <% end %>
+              <%= f.link_to_add "食材の追加", :recipe_items %></td>
             </tr>
           </div>
+
           <div class="form-group col-xs-12">
             <tr>
               <th><%= f.label :作り方 %></th>
-              <td><%= f.text_area :procedure, :placeholder => "200文字以内", size: "20x7", class: "form-control form-control-lg"  %></td>
+              <%= f.fields_for :recipe_items do |f| %>
+                <td><%= f.text_field :procedure, class: "form-control form-control-lg" %>
+                <%= f.link_to_remove "削除" %>
+              <% end %>
+              <%= f.link_to_add "手順の追加", :recipe_items %></td>
             </tr>
           </div>
           <div class="form-group col-xs-12">
